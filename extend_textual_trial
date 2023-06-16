@@ -1,0 +1,16 @@
+#! /usr/bin/env bash
+
+# Extend Textual IRC trail license
+
+set -e
+
+cd "$HOME/Library/Application Support/Textual"
+
+cp Textual_Trial_Information_v2.plist Textual_Trial_Information_v2.plist.bak
+
+current_date=$(date +"%Y-%m-%d")
+
+plutil -replace trialPeriodStartDate -date "${current_date}T00:00:00Z" Textual_Trial_Information_v2.plist
+
+echo "Trial license changed:"
+plutil -p Textual_Trial_Information_v2.plist
